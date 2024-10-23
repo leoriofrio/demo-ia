@@ -1,11 +1,23 @@
 <div class="container mt-4">
+  <h1 class="text-center mb-3">Hogwarts Staff</h1>
   <div class="row">
     <div class="col-md-4" *ngFor="let item of potterList">
-      <div class="card mb-4 shadow-sm">
-        <img src="{{ item.imageUrl }}" class="card-img-top" alt="{{ item.title }}">
+      <div class="card mb-4 shadow-sm pt-3">
+        <img src="{{ item.image }}" class="img-thumbnail mx-auto rounded-circle" style="height: 200px; width: 200px;" alt="{{ item.title }}" *ngIf="item.image.length; else avatar">
+        <ng-template #avatar>
+            <div class="rounded-circle border d-flex justify-content-center align-items-center mx-auto "
+            style="width:200px;height:200px"
+          alt="Avatar">
+          <i class="bi bi-person text-info fs-1"></i>
+          </div>
+        </ng-template>
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.actor }}</p>
+          <p class="card-text">
+            <strong>Actor:</strong> {{ item.actor }}<br>
+            <strong>Gender:</strong> {{ item.gender }}<br>
+            <strong>House:</strong> {{ item.house }}<br>
+          </p>
         </div>
       </div>
     </div>
