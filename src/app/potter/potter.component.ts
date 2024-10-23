@@ -8,17 +8,23 @@ import { PotterService } from './potter.service';
 })
 export class PotterComponent implements OnInit {
   potterList: any[] = [];
+  type = '';
 
   constructor(private potterService: PotterService) {}
 
   ngOnInit(): void {
-    this.getPotterList();
+    this.getPotterList(this.type);
   }
 
-  getPotterList(): void {
-    this.potterService.getStaffCharacters().subscribe((data) => {
+  getPotterList(type: string): void {
+    this.potterService.getStaffCharacters(type).subscribe((data) => {
       console.log(data);
       this.potterList = data;
     });
+  }
+
+  onTypeSelect(type: any): void {
+    console.log(type);
+    this.getPotterList(type);
   }
 }

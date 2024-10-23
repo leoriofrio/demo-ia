@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PotterService {
-  private apiUrl = 'https://hp-api.onrender.com/api/characters/staff';
+  private apiUrl = 'https://hp-api.onrender.com/api/characters';
 
   constructor(private http: HttpClient) {}
 
-  getStaffCharacters(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getStaffCharacters(type: string): Observable<any> {
+    const url = `${this.apiUrl}/${type}`;
+    return this.http.get<any>(url);
   }
 }

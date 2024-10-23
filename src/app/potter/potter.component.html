@@ -1,5 +1,17 @@
 <div class="container mt-4">
   <h1 class="text-center mb-3">Hogwarts Staff</h1>
+  <div class="row justify-content-end">
+    <div class="col-md-2 text-end mb-3">
+      <form>
+      <select name="type" [(ngModel)]="type" (ngModelChange)="onTypeSelect($event)">
+        <option value="">All</option>
+        <option value="staff">Staff</option>
+        <option value="students">Students</option>
+      </select>
+    </form>
+    </div>
+
+  </div>
   <div class="row">
     <div class="col-md-4" *ngFor="let item of potterList">
       <div class="card mb-4 shadow-sm pt-3">
@@ -17,6 +29,7 @@
             <strong>Actor:</strong> {{ item.actor }}<br>
             <strong>Gender:</strong> {{ item.gender }}<br>
             <strong>House:</strong> {{ item.house }}<br>
+            <strong>Alternative Names:</strong> {{ item.alternate_names.join(',') }}<br>
           </p>
         </div>
       </div>
